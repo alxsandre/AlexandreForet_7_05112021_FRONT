@@ -1,4 +1,5 @@
 import './Input.css';
+import PropTypes from 'prop-types';
 
 function Input(props) {
   return (
@@ -7,6 +8,11 @@ function Input(props) {
         <input type={props.label} id={props.label} onChange={props.handleChange} className="field__input" name={props.label} required />
     </li>
   );
+}
+
+Input.propTypes = {
+  label: PropTypes.string,
+  handleChange: PropTypes.func
 }
 
 export default Input;

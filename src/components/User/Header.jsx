@@ -1,6 +1,7 @@
 import logoIcon from '../../logo_icon.png';
 import logoName from '../../logo_name.png';
 import './Header.css';
+import PropTypes from 'prop-types';
 
 function Header(props) {
   return (
@@ -12,6 +13,10 @@ function Header(props) {
       </h1>
     </header>
   );
+}
+
+Header.propTypes = {
+  theme: PropTypes.string
 }
 
 export default Header;
