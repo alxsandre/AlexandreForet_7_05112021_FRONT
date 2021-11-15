@@ -1,0 +1,24 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2.5rem;
+}
+
+.field__label {
+    font-size: .875rem;
+}
+
+.field__input {
+    margin-top: .5rem;
+    background-color: #000000;
+    border: 1px solid #FFD7D7;
+    border-radius: 0.438rem;
+    height: 2.375rem;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-family: 'Rubik', 'Helvetica Neue', sans-serif;
+}
+
+.field__input:focus {
+    outline: none;
+}
