@@ -1,15 +1,19 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
+import React from 'react';
 import './index.css';
 // import App from './App';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './screens/SignIn';
+import SignUp from './screens/SignUp';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router } from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <SignIn />
+      <Routes>
+        <Route path="/signup" component={SignUp} />
+        <Route path="/signin" component={SignIn} />
+      </Routes>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

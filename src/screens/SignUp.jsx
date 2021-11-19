@@ -4,11 +4,22 @@ import Button from '../components/basic/Button';
 import { useState } from 'react';
 import { post } from '../utils/fetch';
 
-function SignIn() {
+function SignUp() {
   const [formData, setFormData] = useState({
+    last_name: "",
+    first_name: "",
     email: "",
-    password: ""
+    password: "",
+    photo: "https://groupomania/photo/"
   });
+
+  const handleChangeLastName = (event) => {
+    setFormData({...formData, last_name: event.target.value});
+  }
+
+  const handleChangeFirstName = (event) => {
+    setFormData({...formData, first_name: event.target.value});
+  }
 
   const handleChangeEmail = (event) => {
     setFormData({...formData, email: event.target.value});
@@ -21,17 +32,19 @@ function SignIn() {
   async function handleSubmit(e) {
     e.preventDefault();
     let response = await post(
-      'http://localhost:3000/api/auth/login',
+      'http://localhost:3000/api/auth/signup',
       formData
     );
-    localStorage.setItem('user', JSON.stringify(await response));
+    console.log(await response)
   }
 
   return (
     <div>
-      <Header theme="Sign in to"/>
+      <Header theme="Sign up to"/>
       <form onSubmit={(e) => handleSubmit(e)}>
         <ul>
+          <Input label="last name" handleChange={handleChangeLastName} />
+          <Input label="first name" handleChange={handleChangeFirstName} />
           <Input label="email" handleChange={handleChangeEmail} />
           <Input label="password" handleChange={handleChangePassword} />
           <Button />
@@ -41,4 +54,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 function Header(props) {
   return (
-    <header>
+    <header className="l-header">
       <img className="logoicon" src={logoIcon} alt="logo" />
       <h1>
         <span className="header__theme"> {props.theme} </span>

@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react'
 
- 
-
-export function usePost(url, data) {
+/*
+export function Post(url, data) {
 
     const [response, setResponse] = useState({})
 
@@ -20,10 +18,9 @@ export function usePost(url, data) {
         const response = await post.json()
         setResponse(response)
     }
-
     fetchPost()
-
-}, [url, data])
+    }, [url, data])
 
 return { response }
 }
+*/

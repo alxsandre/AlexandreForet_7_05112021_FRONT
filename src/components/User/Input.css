@@ -1,11 +1,11 @@
 .field {
     display: flex;
     flex-direction: column;
-    margin: 0 2.5rem;
+    margin: 2.25rem 2.5rem 0 2.5rem;
 }
 
 .field__label {
-    font-size: .875rem;
+    margin-bottom: .15rem;
 }
 
 .field__input {
