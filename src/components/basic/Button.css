@@ -1,3 +1,11 @@
-.arrowright {
-    color: #FFD7D7;
+.button {
+    border: .0625rem solid #FFD7D7;
+    border-radius: .4375rem;
+    background-color: #000000;
+    height: 2.375rem;
+    width: 50%;
+}
+
+.button__text {
+    color: #FFFFFF;
 }

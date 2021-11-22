@@ -1,26 +1,28 @@
 import './Button.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
-import colors from '../../utils/colors';
+import PropTypes from 'prop-types';
+import { useNavigate } from "react-router-dom";
 
-const ButtonNext = styled.button`
-  border: .0625rem solid #FFD7D7;
-  border-radius: .4375rem;
-  background-color: ${colors.black};
-  height: 2.375rem;
-  margin: 3.5rem 2.5rem;
-  left: calc(50% - 2.5rem);
-  width: calc(50% - 2.5rem);
-  position: relative;
-  `
 
-function Button() {
+function Button(props) {
+  let navigate = useNavigate();
+
   return (
-    <ButtonNext type="submit">
-        <FontAwesomeIcon icon={faArrowRight} className="arrowright"></FontAwesomeIcon>
-    </ButtonNext>
+    <button onClick={() => {
+      navigate(props.nav);
+    }}
+    className="button" type="submit">
+      {props.content}
+    </button>
   );
 }
+
+Button.propTypes = {
+  content: PropTypes.oneOfType([
+    PropTypes.elementType,
+    PropTypes.node,
+  ]),
+  nav: PropTypes.string
+}
+
 
 export default Button;

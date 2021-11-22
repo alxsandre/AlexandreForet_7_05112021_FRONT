@@ -1,0 +1,31 @@
+.welcome__title {
+    margin-top: 2.8125rem;
+    font-size: 2.8125rem;
+    color: #FFD7D7;
+}
+
+.welcome__text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #FFD7D7;
+}
+
+.welcome__nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.welcome__nav >  button {
+    font-family: 'Rubik', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+}
+
+.welcome__nav >  button:nth-child(1) {
+    margin: 3.4375rem .625rem 0 1.25rem;
+}
+
+.welcome__nav >  button:nth-child(2) {
+    margin: 3.4375rem 1.25rem 0 .625rem;
+}
