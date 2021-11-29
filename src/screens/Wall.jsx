@@ -1,11 +1,13 @@
 import Header from '../components/layout/Header'
-import './Wall.css'
+import Post from '../components/user/Post'
+import './Wall.scss'
 
 function Wall() {
   return (
     <div>
       <Header />
       <h1>WALL</h1>
+      <Post />
     </div>
   );
 }

@@ -50,7 +50,7 @@ function SignUp() {
           <Input label="first name" handleChange={handleChangeFirstName} />
           <Input label="email" handleChange={handleChangeEmail} />
           <Input label="password" handleChange={handleChangePassword} />
-          <Button content={<ArrowRight />} />
+          <Button nav="/signin" content={<ArrowRight />} />
         </ul>
       </form>
     </div>

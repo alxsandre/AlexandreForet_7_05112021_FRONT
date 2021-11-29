@@ -24,6 +24,7 @@ function SignIn() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     let response = await post(
       'http://localhost:3000/api/auth/login',
       formData

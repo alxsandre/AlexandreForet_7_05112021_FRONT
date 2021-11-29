@@ -1,16 +1,19 @@
 import './Button.css';
 import PropTypes from 'prop-types';
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 
 function Button(props) {
-  let navigate = useNavigate();
+  //let navigate = useNavigate();
 
   return (
-    <button onClick={() => {
+    <button 
+    type="submit"
+    className="button"
+    /*
+    onClick={() => {
       navigate(props.nav);
-    }}
-    className="button" type="submit">
+    }} */>
       {props.content}
     </button>
   );

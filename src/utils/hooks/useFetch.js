@@ -1,26 +1,30 @@
+import { useState, useEffect } from 'react'
 
-/*
-export function Post(url, data) {
+export function useFetch(url, bearer, content) {
+  const [data, setData] = useState({})
+  const [isLoading, setLoading] = useState(true)
 
-    const [response, setResponse] = useState({})
+ 
+useEffect(() => {
+  if (!url) return
+  async function fetchData() {
+    const response = await fetch(url, {
+      method: 'get',
+      headers: {
+        'Authorization': 'Bearer ' + bearer,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json()
+    setData(data)
+    setLoading(false)
+  }
 
-    useEffect(() => {
-        if (!url) return
-        async function fetchPost() {
-        const post = await fetch(url, {
-            method: "post",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ data }),
-          })
-        const response = await post.json()
-        setResponse(response)
-    }
-    fetchPost()
-    }, [url, data])
+  setLoading(true)
+  fetchData()
 
-return { response }
+}, [url, bearer, content])
+
+return { isLoading, data }
 }
-*/
