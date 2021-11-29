@@ -1,5 +1,6 @@
 import Header from '../components/layout/Header'
-import Post from '../components/user/Post'
+import Post from '../components/Post/Post'
+import SendPost from '../components/Post/SendPost'
 import './Wall.scss'
 
 function Wall() {
@@ -8,6 +9,7 @@ function Wall() {
       <Header />
       <h1>WALL</h1>
       <Post />
+      <SendPost />
     </div>
   );
 }

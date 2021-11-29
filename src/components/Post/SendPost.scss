@@ -1,0 +1,26 @@
+@import '../../utils/variable.scss';
+
+.sendpost__text {
+    position: fixed;
+    bottom: 0;
+    min-height: 5rem;
+    width: 100%;
+    font-family: $font-primary;
+    color: $black;
+    background-color: $white-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .9375rem;
+    padding-left: 2.5rem;
+    font-size: 1rem;
+}
+
+.sendpost__text::placeholder {
+    color: $black;
+    padding-top: calc(5rem / 2 - 1rem / 2);
+}
+
+.sendpost__text:focus {
+    outline: none;
+}

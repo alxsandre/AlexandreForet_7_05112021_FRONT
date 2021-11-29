@@ -5,13 +5,20 @@
  * @returns {object}
  */
 
-export async function post(url, data) {
+export async function post(url, data, authentification) {
+  let bearer = authentification
+  if (bearer) {
+    const userAuthentification = localStorage.getItem('user');
+    bearer = JSON.parse(userAuthentification).token;
+  }
+  
   if (!url || !data) return 
   const post = await fetch(url, {
     method: "post",
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
+      'Authorization': 'Bearer ' + bearer,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ ...data }),
   })
