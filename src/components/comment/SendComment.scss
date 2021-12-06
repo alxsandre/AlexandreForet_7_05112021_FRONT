@@ -1,0 +1,28 @@
+@import '../../utils/variable.scss';
+
+.sendcomment__text {
+    bottom: 0;
+    min-height: 4.375rem;
+    width: calc(100% - 2.5rem);
+    font-family: $font-primary;
+    color: $black;
+    background-color: $white-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    padding-left: 2.5rem;
+    border: 0;
+    font-size: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.sendcomment__text::placeholder {
+    color: $black;
+    padding-top: calc(5rem / 2 - 1rem / 2);
+}
+
+.sendcomment__text:focus {
+    outline: none;
+}

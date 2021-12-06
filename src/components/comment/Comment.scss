@@ -1,0 +1,72 @@
+@import '../../utils/variable.scss';
+
+.comment {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.comment__background {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(91, 112, 131, 0.4);
+}
+
+.comment__container {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    max-width: 80vw;
+    min-width: 70vw;
+    max-height: 90vh;
+    background-color: $black;
+    border-radius: 1rem;
+}
+
+.comment__head {
+    border-bottom:  .0625rem solid $white-secondary;
+}
+
+.comment__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    padding: 0;
+}
+
+.comment__cross {
+    font-size: 1.25rem;
+    color: $white-primary;
+    margin: .625rem;
+}
+
+.comment__content {
+    display: flex;
+    padding: .625rem;
+    border-bottom: .0625rem solid $white-secondary;
+}
+
+.comment__image  {
+    width: 3.375rem;
+    height: 3.375rem;
+    background-color: $white-primary;
+    border-radius: 50%;
+}
+
+.comment__text {
+    font-size: .875rem;
+    margin: 0 0 .5rem 1.25rem;
+}
+
+.comment__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.sendpost__text {
+    display: none;
+}

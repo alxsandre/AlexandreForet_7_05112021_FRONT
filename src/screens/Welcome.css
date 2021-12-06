@@ -17,15 +17,18 @@
     align-items: center;
 }
 
-.welcome__nav >  button {
+.welcome__nav >  a {
     font-family: 'Rubik', 'Helvetica Neue', sans-serif;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.welcome__nav >  button:nth-child(1) {
+.welcome__nav >  a:nth-child(1) {
     margin: 3.4375rem .625rem 0 1.25rem;
 }
 
-.welcome__nav >  button:nth-child(2) {
+.welcome__nav >  a:nth-child(2) {
     margin: 3.4375rem 1.25rem 0 .625rem;
 }

@@ -27,11 +27,24 @@
 .post__icons {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: .4375rem;
 }
+
+.post__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    padding: 0;
+}
+
+.post__button--heart {
+    margin-right: .625rem;
+}
+
 .post__comment {
-    justify-items: right;
     font-size: 1.25rem;
     color: $white-primary;
 }
@@ -39,5 +52,4 @@
 .post__heart {
     font-size: 1.25rem;
     color: $white-primary;
-    margin-right: .625rem;
 }
