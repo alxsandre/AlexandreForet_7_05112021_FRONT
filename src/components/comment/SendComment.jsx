@@ -15,8 +15,14 @@ function SendComment(props) {
         setFormData({...formData, content: event.target.value});
     }
 
-    function handleSubmit(e) {
-        post(`${process.env.REACT_APP_HOST}/api/comment`, {...formData, employee_id: userId, post_id: props.postId}, true)
+    async function handleSubmit(e) {
+        e.preventDefault();
+        let response = await post(`${process.env.REACT_APP_HOST}/api/comment`, {...formData, employee_id: userId, post_id: props.postId}, true);
+        if (response) {
+            props.reload(props.load + 1);
+            setFormData({content: ''});
+            e.target.reset();
+        }
     }
     
     return (
@@ -26,6 +32,6 @@ function SendComment(props) {
     )
 }
 
-SendComment.propTypes = { postId: PropTypes.number }
+SendComment.propTypes = { postId: PropTypes.number, load: PropTypes.number, reload: PropTypes.func}
 
 export default SendComment;

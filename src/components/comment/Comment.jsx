@@ -4,41 +4,51 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import SendComment from './SendComment';
-
+import { useState } from 'react';
 
 function Comment(props) {
     const userAuthentification = localStorage.getItem('user');
     const bearer = JSON.parse(userAuthentification).token;
-    console.log(process.env.REACT_APP_HOST)
-    const { data, isLoading } = useFetch(`${process.env.REACT_APP_HOST}/api/comment/${props.postId}`, bearer, userAuthentification)
-
- 
+    const { data, isLoading } = useFetch(`${process.env.REACT_APP_HOST}/api/comment/${props.postId}`, bearer, props.load);
     
     if (!isLoading) {
-        return (Object.keys(data).reverse().map((keyComment, i) => (
-            <article className="comment" key={i}>
-                <div className="comment__background"></div>
-                <div className="comment__container">
-                    <div className="comment__head">
-                    <button className="comment__button" onClick={() => props.updateCommentShown(false)}>
-                        <FontAwesomeIcon icon={faTimes} className="comment__cross"></FontAwesomeIcon>
-                    </button>
+        return (Object.keys(data).map((keyComment, i) => (
+                <article className="comment__content" key={i}>
+                    <img className="comment__image" src={`${process.env.REACT_APP_HOST}/images/ninja-cat-avatar.png`} alt="avatar" />
+                    <div className="comment__wrapper">
+                        <h2 className="comment__text">{data[keyComment].employee.first_name} {data[keyComment].employee.last_name}</h2>
+                        <p className="comment__text">{data[keyComment].content}</p>
                     </div>
-                    <div className="comment__content">
-                        <img className="comment__image" src={`${process.env.REACT_APP_HOST}/images/ninja-cat-avatar.png`} alt="avatar" />
-                        <div className="comment__wrapper">
-                            <h2 className="comment__text">{data[keyComment].employee.first_name} {data[keyComment].employee.last_name}</h2>
-                            <p className="comment__text">{data[keyComment].content}</p>
-                        </div>
-                    </div>
-                    <SendComment postId={props.postId}/>
-                </div>
-            </article>
-        )))
-    }
+                </article>
+            )))
+        }
     return null
 }
 
-Comment.propTypes = { postId: PropTypes.number, updateCommentShown: PropTypes.func }
+function CommentLayout(props) {
+    const [load, reload] = useState(0);
 
-export default Comment;
+    return <section className="comment">
+            <div className="comment__background"></div>
+            <div className="comment__container">
+                <CommentHeader updateCommentShown={props.updateCommentShown}/>
+                <Comment load={load} postId={props.postId}/>
+                <SendComment postId={props.postId} load={load} reload={reload}/>
+            </div>
+        </section>
+}
+
+function CommentHeader(props) {
+    return  <div className="comment__head">
+                <button className="comment__button" onClick={() => props.updateCommentShown(false)}>
+                    <FontAwesomeIcon icon={faTimes} className="comment__cross"></FontAwesomeIcon>
+                </button>
+            </div>   
+}
+
+
+
+CommentLayout.propTypes = { postId: PropTypes.number, updateCommentShown: PropTypes.func }
+CommentHeader.propTypes = { updateCommentShown: PropTypes.func }
+
+export default CommentLayout;

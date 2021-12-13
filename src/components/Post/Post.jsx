@@ -3,15 +3,14 @@ import { useFetch } from '../../utils/hooks/useFetch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import Comment from '../comment/Comment';
+import CommentLayout from '../comment/Comment';
 
-function Post() {
+function Post(props) {
     const userAuthentification = localStorage.getItem('user');
     const bearer = JSON.parse(userAuthentification).token;
-    const { data, isLoading } = useFetch(`${process.env.REACT_APP_HOST}/api/post/`, bearer, userAuthentification);
+    const { data, isLoading } = useFetch(`${process.env.REACT_APP_HOST}/api/post/`, bearer, props.load);
+
     const [commentShown, updateCommentShown] = useState(false);
-
-
     function showComments(postId) {
         commentShown ? updateCommentShown(false) : updateCommentShown(postId);
     }
@@ -30,7 +29,7 @@ function Post() {
                         <button className="post__button" onClick={() => showComments(data[keyPost].id)}>
                             <FontAwesomeIcon icon={faComment} className="post__comment"></FontAwesomeIcon>
                         </button>
-                        {commentShown === data[keyPost].id && <Comment postId={data[keyPost].id} commentShown={commentShown} updateCommentShown={updateCommentShown} />}
+                        {commentShown === data[keyPost].id && <CommentLayout postId={data[keyPost].id} commentShown={commentShown} updateCommentShown={updateCommentShown} />}
                     </div>
                 </div>    
             </article>

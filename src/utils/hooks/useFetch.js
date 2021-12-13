@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export function useFetch(url, bearer, content) {
+export function useFetch(url, bearer, reload) {
   const [data, setData] = useState({})
   const [isLoading, setLoading] = useState(true)
 
@@ -24,7 +24,7 @@ useEffect(() => {
   setLoading(true)
   fetchData()
 
-}, [url, bearer, content])
+}, [url, bearer, reload])
 
 return { isLoading, data }
 }
