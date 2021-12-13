@@ -16,7 +16,7 @@ function SendComment(props) {
     }
 
     function handleSubmit(e) {
-        post('http://localhost:3000/api/comment', {...formData, employee_id: userId, post_id: props.postId}, true)
+        post(`${process.env.REACT_APP_HOST}/api/comment`, {...formData, employee_id: userId, post_id: props.postId}, true)
     }
     
     return (

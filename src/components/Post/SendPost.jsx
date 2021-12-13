@@ -15,7 +15,7 @@ function SendPost() {
     }
 
     function handleSubmit(e) {
-        post('http://localhost:3000/api/post', {...formData, employee_id: userId}, true)
+        post(`${process.env.REACT_APP_HOST}/api/post`, {...formData, employee_id: userId}, true)
     }
     
     return (

@@ -17,18 +17,21 @@
     align-items: center;
 }
 
-.welcome__nav >  a {
-    font-family: 'Rubik', 'Helvetica Neue', sans-serif;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .welcome__nav >  a:nth-child(1) {
     margin: 3.4375rem .625rem 0 1.25rem;
 }
 
 .welcome__nav >  a:nth-child(2) {
     margin: 3.4375rem 1.25rem 0 .625rem;
+}
+
+.link__asbutton {
+    border: .0625rem solid #FFD7D7;
+    border-radius: .4375rem;
+    height: 2.375rem;
+    width: 50%;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

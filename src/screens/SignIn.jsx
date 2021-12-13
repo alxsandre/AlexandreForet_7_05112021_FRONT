@@ -4,6 +4,7 @@ import Button from '../components/basic/Button';
 import ArrowRight from '../components/basic/ArrowRight';
 import './Sign.css';
 
+import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { post } from '../utils/fetch';
 
@@ -22,19 +23,22 @@ function SignIn() {
     setFormData({...formData, password: event.target.value});
   }
 
+  let navigate = useNavigate();
+
   async function handleSubmit(e) {
     e.preventDefault();
 
     let response = await post(
-      'http://localhost:3000/api/auth/login',
+      `${process.env.REACT_APP_HOST}/api/auth/login`,
       formData
     );
     localStorage.setItem('user', JSON.stringify(await response));
+    navigate(`/wall`);
   }
 
   return (
     <div>
-      <Header theme="Sign in to"/>
+      <Header theme="Login to"/>
       <form className="sign__form" onSubmit={(e) => handleSubmit(e)}>
         <ul>
           <Input label="email" handleChange={handleChangeEmail} />

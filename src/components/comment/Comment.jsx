@@ -9,7 +9,8 @@ import SendComment from './SendComment';
 function Comment(props) {
     const userAuthentification = localStorage.getItem('user');
     const bearer = JSON.parse(userAuthentification).token;
-    const { data, isLoading } = useFetch(`http://localhost:3000/api/comment/${props.postId}`, bearer, userAuthentification)
+    console.log(process.env.REACT_APP_HOST)
+    const { data, isLoading } = useFetch(`${process.env.REACT_APP_HOST}/api/comment/${props.postId}`, bearer, userAuthentification)
 
  
     
@@ -24,7 +25,7 @@ function Comment(props) {
                     </button>
                     </div>
                     <div className="comment__content">
-                        <img className="comment__image" src="http://localhost:3000/images/ninja-cat-avatar.png" alt="avatar" />
+                        <img className="comment__image" src={`${process.env.REACT_APP_HOST}/images/ninja-cat-avatar.png`} alt="avatar" />
                         <div className="comment__wrapper">
                             <h2 className="comment__text">{data[keyComment].employee.first_name} {data[keyComment].employee.last_name}</h2>
                             <p className="comment__text">{data[keyComment].content}</p>

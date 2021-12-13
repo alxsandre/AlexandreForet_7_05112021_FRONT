@@ -4,6 +4,7 @@ import Button from '../components/basic/Button';
 import ArrowRight from '../components/basic/ArrowRight';
 import './Sign.css';
 
+import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { post } from '../utils/fetch';
 
@@ -32,13 +33,15 @@ function SignUp() {
     setFormData({...formData, password: event.target.value});
   }
 
+  let navigate = useNavigate();
+
   async function handleSubmit(e) {
     e.preventDefault();
     let response = await post(
-      'http://localhost:3000/api/auth/signup',
+      `${process.env.REACT_APP_HOST}/api/auth/signup`,
       formData
     );
-    console.log(await response)
+    if (response) navigate(`/signin`);
   }
 
   return (
