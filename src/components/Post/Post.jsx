@@ -1,35 +1,45 @@
 import './Post.scss'
-import { useFetch } from '../../utils/hooks/useFetch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faHeart, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import CommentLayout from '../comment/Comment';
 
 function Post(props) {
-    const userAuthentification = localStorage.getItem('user');
-    const bearer = JSON.parse(userAuthentification).token;
-    const { data, isLoading } = useFetch(`${process.env.REACT_APP_HOST}/api/post/`, bearer, props.load);
-
+    
+   
     const [commentShown, updateCommentShown] = useState(false);
     function showComments(postId) {
         commentShown ? updateCommentShown(false) : updateCommentShown(postId);
     }
 
-    if (!isLoading) {
-        return (Object.keys(data).reverse().map((keyPost, i) => (
+    const editPostToggle = (postId) => {
+        console.log(props.postToUpdate)
+        if (props.postToUpdate) {
+            console.log('you')
+            props.setPostToUpdate(null);
+        } else {
+            props.setPostToUpdate(postId);
+        }
+    }
+
+    if (!props.isLoading) {
+        return (Object.keys(props.data).reverse().map((keyPost, i) => (
             <article className="post" key={i}>
                 <img className="post__image" src={`${process.env.REACT_APP_HOST}/images/ninja-cat-avatar.png`} alt="avatar" />
                 <div className="post__wrapper">
-                    <h2 className="post__text">{data[keyPost].employee.first_name} {data[keyPost].employee.last_name}</h2>
-                    <p className="post__text">{data[keyPost].content}</p>
+                    <h2 className="post__text">{props.data[keyPost].employee.first_name} {props.data[keyPost].employee.last_name}</h2>
+                    <p className="post__text">{props.data[keyPost].content}</p>
                     <div className="post__icons">
+                        <button className="post__button post__button--heart" onClick={() => editPostToggle(keyPost)}>
+                            <FontAwesomeIcon icon={faEdit} className="post__edit"></FontAwesomeIcon>
+                        </button>
                         <button className="post__button post__button--heart">
                             <FontAwesomeIcon icon={faHeart} className="post__heart"></FontAwesomeIcon>
                         </button>
-                        <button className="post__button" onClick={() => showComments(data[keyPost].id)}>
+                        <button className="post__button" onClick={() => showComments(props.data[keyPost].id)}>
                             <FontAwesomeIcon icon={faComment} className="post__comment"></FontAwesomeIcon>
                         </button>
-                        {commentShown === data[keyPost].id && <CommentLayout postId={data[keyPost].id} commentShown={commentShown} updateCommentShown={updateCommentShown} />}
+                        {commentShown === props.data[keyPost].id && <CommentLayout postId={props.data[keyPost].id} commentShown={commentShown} updateCommentShown={updateCommentShown} />}
                     </div>
                 </div>    
             </article>

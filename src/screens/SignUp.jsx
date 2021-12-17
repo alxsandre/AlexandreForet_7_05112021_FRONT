@@ -41,7 +41,14 @@ function SignUp() {
       `${process.env.REACT_APP_HOST}/api/auth/signup`,
       formData
     );
-    if (response) navigate(`/signin`);
+    if (response) {
+      let response = await post(
+        `${process.env.REACT_APP_HOST}/api/auth/login`,
+        {email: formData.email, password: formData.password}
+      );
+      localStorage.setItem('user', JSON.stringify(await response));
+      navigate(`/wall`);
+    }
   }
 
   return (

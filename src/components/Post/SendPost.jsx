@@ -11,17 +11,31 @@ function SendPost(props) {
     
     
     const handleChange = (event) => {
+        if (props.postToUpdate) {
+            props.upDateData(props.postToUpdate, event);
+            console.log({...formData})
+        }
         setFormData({...formData, content: event.target.value});
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
-        let response = post(`${process.env.REACT_APP_HOST}/api/post`, {...formData, employee_id: userId}, true);
-        if (response) {
-            props.reload(props.load + 1)
-            setFormData({content: ''});
-            e.target.reset();
+        if (props.postToUpdate) {
+            let response = post(`${process.env.REACT_APP_HOST}/api/post/88`, {...formData}, true, "put");
+            if (response) {
+                props.reload(props.load + 1)
+                setFormData({content: ''});
+                e.target.reset();
+            }
+        } else {
+            let response = post(`${process.env.REACT_APP_HOST}/api/post`, {...formData, employee_id: userId}, true, "post");
+            if (response) {
+                props.reload(props.load + 1)
+                setFormData({content: ''});
+                e.target.reset();
+            }
         }
+        
     }
     
     return (
@@ -33,7 +47,9 @@ function SendPost(props) {
 
 SendPost.propTypes = {
     load: PropTypes.number,
-    reload: PropTypes.func
+    reload: PropTypes.func,
+    postToUpdate: PropTypes.string,
+    upDateData: PropTypes.func
   }
 
 export default SendPost;
