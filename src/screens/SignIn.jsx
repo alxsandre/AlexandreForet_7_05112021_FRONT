@@ -30,7 +30,9 @@ function SignIn() {
 
     let response = await post(
       `${process.env.REACT_APP_HOST}/api/auth/login`,
-      formData
+      formData,
+      null,
+      'post'
     );
     localStorage.setItem('user', JSON.stringify(await response));
     navigate(`/wall`);

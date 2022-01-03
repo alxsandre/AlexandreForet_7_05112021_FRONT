@@ -17,7 +17,7 @@ function SendComment(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        let response = await post(`${process.env.REACT_APP_HOST}/api/comment`, {...formData, employee_id: userId, post_id: props.postId}, true);
+        let response = await post(`${process.env.REACT_APP_HOST}/api/comment`, {...formData, employee_id: userId, post_id: props.postId}, true, 'post');
         if (response) {
             props.reload(props.load + 1);
             setFormData({content: ''});

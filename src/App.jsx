@@ -3,6 +3,7 @@ import Welcome from './screens/Welcome';
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import Wall from './screens/Wall';
+import Profile from './screens/Profile';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/wall" element={<Wall />} />
+        <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }

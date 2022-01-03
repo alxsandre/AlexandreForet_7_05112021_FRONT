@@ -1,0 +1,23 @@
+.profile {
+    h1 {
+        text-align: left;
+        margin-left: 2.5rem;
+    }
+}
+
+.profile__form {
+    display: flex;
+    align-items: end;
+}
+
+.profile__form > * {
+    margin-right: 0;
+}
+
+.profile__form {
+    button {
+        height: 2.625rem;
+        margin-left: .3125rem;
+        width: auto;
+    }
+}

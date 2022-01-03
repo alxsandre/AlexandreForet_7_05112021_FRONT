@@ -13,7 +13,6 @@ function SendPost(props) {
     const handleChange = (event) => {
         if (props.postToUpdate) {
             props.upDateData(props.postToUpdate, event);
-            console.log({...formData})
         }
         setFormData({...formData, content: event.target.value});
     }
