@@ -1,11 +1,11 @@
-import Header from '../components/layout/Header'
+import { HeaderWelcome } from '../components/layout/Header'
 import './Welcome.css'
 import { Link } from "react-router-dom";
 
 function Welcome() {
   return (
     <div>
-      <Header />
+      <HeaderWelcome />
       <section className="welcome__text">
         <h1 className="welcome__title">Hello!</h1>
         <p>Good to see you here</p>

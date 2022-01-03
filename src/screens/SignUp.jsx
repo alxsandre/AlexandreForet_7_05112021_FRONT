@@ -39,12 +39,16 @@ function SignUp() {
     e.preventDefault();
     let response = await post(
       `${process.env.REACT_APP_HOST}/api/auth/signup`,
-      formData
+      formData,
+      null,
+      'post'
     );
     if (response) {
       let response = await post(
         `${process.env.REACT_APP_HOST}/api/auth/login`,
-        {email: formData.email, password: formData.password}
+        {email: formData.email, password: formData.password},
+        null,
+        'post'
       );
       localStorage.setItem('user', JSON.stringify(await response));
       navigate(`/wall`);
