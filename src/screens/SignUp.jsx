@@ -17,6 +17,8 @@ function SignUp() {
     photo: "https://groupomania/photo/"
   });
 
+  const [errorMessage, setErrorMessage] = useState('');
+
   const handleChangeLastName = (event) => {
     setFormData({...formData, last_name: event.target.value});
   }
@@ -43,7 +45,9 @@ function SignUp() {
       null,
       'post'
     );
-    if (response) {
+    if (await response.error) {
+      setErrorMessage(response.error);
+    } else if (await response) {
       let response = await post(
         `${process.env.REACT_APP_HOST}/api/auth/login`,
         {email: formData.email, password: formData.password},
@@ -54,11 +58,13 @@ function SignUp() {
       navigate(`/wall`);
     }
   }
+  
 
   return (
     <div className="layer">
       <Header theme="Sign up to"/>
       <form className="sign__form" onSubmit={(e) => handleSubmit(e)}>
+        {errorMessage && <p className="error__message">{errorMessage}</p>}
         <ul>
           <Input label="last name" handleChange={handleChangeLastName} />
           <Input label="first name" handleChange={handleChangeFirstName} />

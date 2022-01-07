@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 
 export function useFetch(url, bearer, reload) {
-  const [data, setData] = useState({})
-  const [isLoading, setLoading] = useState(true)
-
+  const [data, setData] = useState({});
+  const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
  
   useEffect(() => {
     if (!url) return
     async function fetchData() {
-      const response = await fetch(url, {
+      try { const response = await fetch(url, {
         method: 'get',
         headers: {
           'Authorization': 'Bearer ' + bearer,
@@ -18,7 +18,11 @@ export function useFetch(url, bearer, reload) {
       });
       const data = await response.json()
       setData(data)
-      setLoading(false)
+      } catch (err) {
+        setError(true)
+      } finally {
+        setLoading(false)
+      }
     }
 
     setLoading(true)
@@ -29,10 +33,9 @@ export function useFetch(url, bearer, reload) {
   function upDateData(index, event) {
     let newData = {...data};
     newData[index].content = event.target.value;
-    console.log(newData)
 
     setData(newData)
   }
 
-return { isLoading, data, upDateData }
+return { isLoading, data, upDateData, error }
 }

@@ -13,6 +13,12 @@
             width: 11.625rem;
         }
     }
+    .message {
+        margin-left: 2.5rem;
+        @include sm {
+            margin-left: 0;
+        }
+    }
 }
 
 .layer--profile {

@@ -5,8 +5,6 @@ import { useState } from 'react';
 import CommentLayout from '../comment/Comment';
 
 function Post(props) {
-    
-   
     const [commentShown, updateCommentShown] = useState(false);
     function showComments(postId) {
         commentShown ? updateCommentShown(false) : updateCommentShown(postId);

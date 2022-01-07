@@ -14,7 +14,7 @@ function Header() {
   }
 
   return (
-    <header className="header">
+    <header className="header header--main">
         <img className="header__logo" src={logoIconName} alt="logo" />
         <ul className="header__nav">
           <li><Link to="/wall">Wall</Link></li>
@@ -28,7 +28,7 @@ function Header() {
 function HeaderWelcome() {
   
   return (
-    <header className="header">
+    <header className="header header--welcome">
         <img className="header__logo" src={logoIconName} alt="logo" />
     </header>
   );

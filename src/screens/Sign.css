@@ -4,3 +4,11 @@
     width: calc(50% - 2.5rem);
     position: relative;
 }
+
+.error__message {
+    font-size: .8125rem;
+    position: relative;
+    top: .9375rem;
+    text-decoration: underline;
+    margin: 0rem 2.5rem 0 2.5rem;
+}

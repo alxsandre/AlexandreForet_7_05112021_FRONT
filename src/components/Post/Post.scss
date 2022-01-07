@@ -1,14 +1,6 @@
 @import '../../utils/variable.scss';
 @import '../../utils/mediaqueries.scss';
 
-header {
-    @include sm {
-        position: fixed;
-        width: 100%;
-        background-color: black;
-        top: 0;
-    }
-}
 
 .post {
     display: flex;

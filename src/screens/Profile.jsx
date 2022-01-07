@@ -11,6 +11,8 @@ function Profile() {
   const [email, setEmail] = useState({
     email: ""
   });
+  const [messageEmail, setMessageEmail] = useState('');
+  const [messagePassword, setMessagePassword] = useState('');
 
   const [password, setPassword] = useState({
     password: ""
@@ -36,9 +38,13 @@ function Profile() {
       true,
       'put'
     );
-      if (response) {
-        setEmail({email: ''});
-        e.target.reset();
+    if (await response.error) {
+      setMessageEmail(response.error);
+    } else if (await response) {
+      console.log('rep', response)
+      setMessageEmail(response.message);
+      setEmail({email: ''});
+      e.target.reset();
     }
   }
 
@@ -50,9 +56,12 @@ function Profile() {
       true,
       'put'
     );
-      if (response) {
-        setPassword({password: ''});
-        e.target.reset();
+    if (await response.error) {
+      setMessagePassword(response.error);
+    } else if (await response) {
+      setMessagePassword(response.message);
+      setPassword({password: ''});
+      e.target.reset();
     }
   }
 
@@ -65,10 +74,12 @@ function Profile() {
               <Input label="email" extraLabel={'Change your '} handleChange={handleChangeEmail} />
               <Button content={<ArrowRight />} />
           </form>
+          {messageEmail && <p className="message">{messageEmail}</p>}
           <form className="profile__form" onSubmit={(e) => handleSubmitPassword(e)}>
               <Input label="password" extraLabel={'Change your '} handleChange={handleChangePassword} />
               <Button content={<ArrowRight />} />
           </form>
+          {messagePassword && <p className="message">{messagePassword}</p>}
         </div>
     </div>
   );

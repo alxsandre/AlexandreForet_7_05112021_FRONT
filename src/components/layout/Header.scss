@@ -10,6 +10,16 @@
     }
 }
 
+.header--main,
+.header--welcome {
+    @include sm {
+        position: fixed;
+        width: 100%;
+        background-color: black;
+        top: 0;
+    }
+}
+
 .header__logo {
     padding: .8rem;
     width: 10rem;

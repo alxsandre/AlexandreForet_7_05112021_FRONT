@@ -14,6 +14,7 @@ function SignIn() {
     email: "",
     password: ""
   });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChangeEmail = (event) => {
     setFormData({...formData, email: event.target.value});
@@ -34,18 +35,22 @@ function SignIn() {
       null,
       'post'
     );
-    localStorage.setItem('user', JSON.stringify(await response));
-    navigate(`/wall`);
+    if (await response.error) {
+      setErrorMessage(response.error);
+    } else if (await response) {
+      localStorage.setItem('user', JSON.stringify(await response));
+      navigate(`/wall`);
+    }
   }
 
   return (
     <div className="layer">
       <Header theme="Login to"/>
       <form className="sign__form" onSubmit={(e) => handleSubmit(e)}>
+        {errorMessage && <p className="error__message">{errorMessage}</p>}
         <ul>
           <Input label="email" handleChange={handleChangeEmail} />
           <Input label="password" handleChange={handleChangePassword} />
-          
           <Button content={<ArrowRight />} />
         </ul>
       </form>
