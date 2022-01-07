@@ -1,4 +1,5 @@
 @import './utils/variable.scss';
+@import './utils/mediaqueries.scss';
 
 body {
   margin: 0;
@@ -26,4 +27,16 @@ h1 {
 a {
   text-decoration: none;
   color: $white-secondary;
+}
+
+.layer {
+  @include sm {
+    margin: 0 100px;
+  }
+  @include lg {
+    margin: 0 200px;
+  }
+  @include xl {
+    margin: 0 300px;
+  }
 }

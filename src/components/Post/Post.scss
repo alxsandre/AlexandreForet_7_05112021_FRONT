@@ -1,8 +1,22 @@
 @import '../../utils/variable.scss';
+@import '../../utils/mediaqueries.scss';
+
+header {
+    @include sm {
+        position: fixed;
+        width: 100%;
+        background-color: black;
+        top: 0;
+    }
+}
 
 .post {
     display: flex;
     border-top: .0625rem solid $white-secondary;
+    @include sm {
+        border-right: .0625rem solid $white-secondary;
+        border-left: .0625rem solid $white-secondary;
+    }
     padding: .9375rem;
 }
 

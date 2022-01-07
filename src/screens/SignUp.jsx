@@ -56,7 +56,7 @@ function SignUp() {
   }
 
   return (
-    <div>
+    <div className="layer">
       <Header theme="Sign up to"/>
       <form className="sign__form" onSubmit={(e) => handleSubmit(e)}>
         <ul>

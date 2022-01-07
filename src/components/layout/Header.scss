@@ -1,9 +1,13 @@
 @import '../../utils/variable.scss';
+@import '../../utils/mediaqueries.scss';
 
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
+    @include sm {
+        align-items: center;
+    }
 }
 
 .header__logo {
@@ -14,13 +18,23 @@
 
 .header__nav {
     display: flex;
-    align-items: center;
-}
-
-.header__nav > * {
-    margin-right: .8rem;
-  
-    font-size: .875rem;
+    flex-direction: column;
+    @include sm {
+        flex-direction: row; 
+        align-items: center;
+        margin: 0;
+    }
+    & > li {
+        text-align: right;
+        margin-bottom: .1875rem;
+    }
+    .button--header {
+        margin-top: .1875rem;
+    }
+    & > * {
+        margin-right: .8rem;
+        font-size: .875rem;
+    }
 }
 
 a {

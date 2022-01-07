@@ -39,7 +39,7 @@ function SignIn() {
   }
 
   return (
-    <div>
+    <div className="layer">
       <Header theme="Login to"/>
       <form className="sign__form" onSubmit={(e) => handleSubmit(e)}>
         <ul>

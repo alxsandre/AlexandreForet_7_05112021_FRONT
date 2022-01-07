@@ -24,9 +24,11 @@ function Wall() {
   return (
     <div>
       <Header />
-      <h1>WALL</h1>
-      <SendPost load={load} reload={reload} postToUpdate={postKey} upDateData={upDateData}/>
-      <Post data={data} isLoading={isLoading} setPostToUpdate={setPostKey} postToUpdate={postKey}/>
+        <h1>WALL</h1>
+        <SendPost load={load} reload={reload} postToUpdate={postKey} upDateData={upDateData}/>
+      <div className="layer">
+        <Post data={data} isLoading={isLoading} setPostToUpdate={setPostKey} postToUpdate={postKey}/>
+      </div>
     </div>
   );
 }

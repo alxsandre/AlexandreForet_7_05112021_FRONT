@@ -59,15 +59,17 @@ function Profile() {
   return (
     <div className="profile">
         <Header />
-        <h1>Modify profile</h1>
-        <form className="profile__form" onSubmit={(e) => handleSubmitEmail(e)}>
-            <Input label="email" handleChange={handleChangeEmail} />
-            <Button content={<ArrowRight />} />
-        </form>
-        <form className="profile__form" onSubmit={(e) => handleSubmitPassword(e)}>
-            <Input label="password" handleChange={handleChangePassword} />
-            <Button content={<ArrowRight />} />
-        </form>
+        <div className="layer layer--profile">
+          <h1>Modify profile</h1>
+          <form className="profile__form" onSubmit={(e) => handleSubmitEmail(e)}>
+              <Input label="email" extraLabel={'Change your '} handleChange={handleChangeEmail} />
+              <Button content={<ArrowRight />} />
+          </form>
+          <form className="profile__form" onSubmit={(e) => handleSubmitPassword(e)}>
+              <Input label="password" extraLabel={'Change your '} handleChange={handleChangePassword} />
+              <Button content={<ArrowRight />} />
+          </form>
+        </div>
     </div>
   );
 }

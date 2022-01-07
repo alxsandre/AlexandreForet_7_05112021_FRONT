@@ -1,7 +1,11 @@
 @import '../utils/variable.scss';
+@import '../utils/mediaqueries.scss';
 
 h1 {
     font-size: 1.125rem;
     text-align: right;
     margin: 3.125rem .9375rem 0 0;
+    @include sm {
+        margin-top: 1rem;
+    }
 }
