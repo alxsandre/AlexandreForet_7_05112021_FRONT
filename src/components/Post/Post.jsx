@@ -28,13 +28,13 @@ function Post(props) {
                     <h2 className="post__text">{props.data[keyPost].employee.first_name} {props.data[keyPost].employee.last_name}</h2>
                     <p className="post__text">{props.data[keyPost].content}</p>
                     <div className="post__icons">
-                        <button className="post__button post__button--heart" onClick={() => editPostToggle(keyPost)}>
+                        <button aria-label="edit" className="post__button post__button--heart" onClick={() => editPostToggle(keyPost)}>
                             <FontAwesomeIcon icon={faEdit} className="post__edit"></FontAwesomeIcon>
                         </button>
-                        <button className="post__button post__button--heart">
+                        <button aria-label="like" className="post__button post__button--heart">
                             <FontAwesomeIcon icon={faHeart} className="post__heart"></FontAwesomeIcon>
                         </button>
-                        <button className="post__button" onClick={() => showComments(props.data[keyPost].id)}>
+                        <button aria-label="open comments" className="post__button" onClick={() => showComments(props.data[keyPost].id)}>
                             <span className="post__commentnumber">{props.data[keyPost].comments.length}</span>
                             <FontAwesomeIcon icon={faComment} className="post__comment"></FontAwesomeIcon>
                         </button>
