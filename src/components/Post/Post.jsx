@@ -37,6 +37,7 @@ function Post(props) {
                             <FontAwesomeIcon icon={faHeart} className="post__heart"></FontAwesomeIcon>
                         </button>
                         <button className="post__button" onClick={() => showComments(props.data[keyPost].id)}>
+                            <span className="post__commentnumber">{props.data[keyPost].comments.length}</span>
                             <FontAwesomeIcon icon={faComment} className="post__comment"></FontAwesomeIcon>
                         </button>
                         {commentShown === props.data[keyPost].id && <CommentLayout postId={props.data[keyPost].id} commentShown={commentShown} updateCommentShown={updateCommentShown} />}
