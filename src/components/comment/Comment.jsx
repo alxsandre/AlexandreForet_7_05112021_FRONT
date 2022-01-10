@@ -32,7 +32,9 @@ function CommentLayout(props) {
             <div className="comment__background"></div>
             <div className="comment__container">
                 <CommentHeader updateCommentShown={props.updateCommentShown}/>
-                <Comment load={load} postId={props.postId}/>
+                <div className="comment__layer">
+                    <Comment load={load} postId={props.postId}/>
+                </div>
                 <SendComment postId={props.postId} load={load} reload={reload}/>
             </div>
         </section>

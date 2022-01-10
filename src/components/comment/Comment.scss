@@ -28,6 +28,11 @@
     border-radius: 1rem;
 }
 
+.comment__layer {
+    height: 30vh;
+    overflow: scroll;
+}
+
 .comment__head {
     border-bottom:  .0625rem solid $white-secondary;
 }
