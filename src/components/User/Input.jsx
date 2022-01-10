@@ -8,10 +8,10 @@ function Input(props) {
   }
 
   return (
-    <li className="field">
+    <div className="field">
         <label htmlFor={labelNoSpace || props.label} className="field__label">{props.extraLabel}{props.label}:</label>
         <input type={labelNoSpace || props.label} id={labelNoSpace || props.label} onChange={props.handleChange} className="field__input" name={labelNoSpace || props.label} required />
-    </li>
+    </div>
   );
 }
 

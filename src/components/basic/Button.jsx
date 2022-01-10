@@ -10,10 +10,7 @@ function Button(props) {
     <button 
     type="submit"
     className="button"
-    /*
-    onClick={() => {
-      navigate(props.nav);
-    }} */>
+    aria-label={props.ariaLabel}>
       {props.content}
     </button>
   );
@@ -24,7 +21,8 @@ Button.propTypes = {
     PropTypes.elementType,
     PropTypes.node,
   ]),
-  nav: PropTypes.string
+  nav: PropTypes.string,
+  ariaLabel: PropTypes.string,
 }
 
 

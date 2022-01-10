@@ -31,7 +31,6 @@ function Profile() {
 
   async function handleSubmitEmail(e) {
     e.preventDefault();
-    console.log(email)
     let response = await post(
       `${process.env.REACT_APP_HOST}/api/auth/profile/${userId}`,
       email,
@@ -41,7 +40,6 @@ function Profile() {
     if (await response.error) {
       setMessageEmail(response.error);
     } else if (await response) {
-      console.log('rep', response)
       setMessageEmail(response.message);
       setEmail({email: ''});
       e.target.reset();
@@ -72,12 +70,12 @@ function Profile() {
           <h1>Modify profile</h1>
           <form className="profile__form" onSubmit={(e) => handleSubmitEmail(e)}>
               <Input label="email" extraLabel={'Change your '} handleChange={handleChangeEmail} />
-              <Button content={<ArrowRight />} />
+              <Button ariaLabel={'submit to change email'} content={<ArrowRight />} />
           </form>
           {messageEmail && <p className="message">{messageEmail}</p>}
           <form className="profile__form" onSubmit={(e) => handleSubmitPassword(e)}>
               <Input label="password" extraLabel={'Change your '} handleChange={handleChangePassword} />
-              <Button content={<ArrowRight />} />
+              <Button ariaLabel={'submit to change password'}  content={<ArrowRight />} />
           </form>
           {messagePassword && <p className="message">{messagePassword}</p>}
         </div>

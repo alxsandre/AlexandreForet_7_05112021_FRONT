@@ -11,9 +11,7 @@ function Post(props) {
     }
 
     const editPostToggle = (postId) => {
-        console.log(props.postToUpdate)
         if (props.postToUpdate) {
-            console.log('you')
             props.setPostToUpdate(null);
         } else {
             props.setPostToUpdate(postId);

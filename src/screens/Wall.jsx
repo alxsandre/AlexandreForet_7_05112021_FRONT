@@ -14,11 +14,8 @@ function Wall() {
   const bearer = JSON.parse(userAuthentification).token;
   const url = `${process.env.REACT_APP_HOST}/api/post/`;
   let { data, isLoading, upDateData, error } = useFetch(url, bearer, load);
-  console.log('err', error)
   const [postKey, setPostKey] = useState();
-
-  if (error) {
-    console.log(error)
+  if (error || data.error  === 0) {
     return (
       <div>
         <Header />

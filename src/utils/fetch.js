@@ -23,6 +23,5 @@ export async function post(url, data, authentification, request) {
     body: JSON.stringify({ ...data }),
   })
   let response = await post.json()
-  console.log(response)
   return response;
 }

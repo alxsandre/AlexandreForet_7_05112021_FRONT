@@ -2,7 +2,7 @@ import Header from '../components/user/Header';
 import Input from '../components/user/Input';
 import Button from '../components/basic/Button';
 import ArrowRight from '../components/basic/ArrowRight';
-import './Sign.css';
+import './Sign.scss';
 
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
@@ -48,11 +48,9 @@ function SignIn() {
       <Header theme="Login to"/>
       <form className="sign__form" onSubmit={(e) => handleSubmit(e)}>
         {errorMessage && <p className="error__message">{errorMessage}</p>}
-        <ul>
-          <Input label="email" handleChange={handleChangeEmail} />
-          <Input label="password" handleChange={handleChangePassword} />
-          <Button content={<ArrowRight />} />
-        </ul>
+        <Input label="email" handleChange={handleChangeEmail} />
+        <Input label="password" handleChange={handleChangePassword} />
+        <Button ariaLabel="submit to login" content={<ArrowRight />} />
       </form>
     </div>
   );
