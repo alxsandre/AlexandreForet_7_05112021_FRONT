@@ -1,6 +1,7 @@
-import './Post.scss'
+import './Post.scss';
+import { post } from '../../utils/fetch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment, faHeart, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faHeart, faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import CommentLayout from '../comment/Comment';
 
@@ -10,26 +11,43 @@ function Post(props) {
         commentShown ? updateCommentShown(false) : updateCommentShown(postId);
     }
 
-    const editPostToggle = (postId) => {
-        if (props.postToUpdate) {
-            props.setPostToUpdate(null);
+    const editPostToggle = (postIdReact, postIdDb) => {
+        if (props.postIdReact) {
+            props.setPostIdReact(null);
         } else {
-            props.setPostToUpdate(postId);
+            props.setPostIdReact(postIdReact);
+            props.setPostIdDb(postIdDb);
+        }
+    }
+
+    let deletePost = async (postToDelete) => {
+        let response = await post(`${process.env.REACT_APP_HOST}/api/post/${postToDelete}`, {}, true, "delete");
+        if (await response.message) {
+            props.reload(props.load + 1)
         }
     }
 
     if (!props.isLoading) {
         return (Object.keys(props.data).reverse().map((keyPost, i) => (
-            <article className="post" key={i}>
+            <article className={(props.postIdReact && 'post post--update') || 'post'} key={i}>
                 <img className="post__image" src={`${process.env.REACT_APP_HOST}/images/ninja-cat-avatar.png`} alt="avatar" />
                 <div className="post__wrapper">
-                    <h2 className="post__text">{props.data[keyPost].employee.first_name} {props.data[keyPost].employee.last_name}</h2>
+                    <div className="post__head">
+                        <h2 className="post__text">{props.data[keyPost].employee.first_name} {props.data[keyPost].employee.last_name}</h2>
+                        <div className="post__icons">
+                            {(props.user.userId === props.data[keyPost].employee_id) &&
+                            <button aria-label="edit" className="post__button post__button--left" onClick={() => editPostToggle(keyPost, props.data[keyPost].id)}>
+                                <FontAwesomeIcon icon={faEdit} className="post__edit"></FontAwesomeIcon>
+                            </button>}
+                            {(props.user.userId === props.data[keyPost].employee_id || props.user.adminer) &&
+                            <button aria-label="delete" className="post__button" onClick={() => deletePost(props.data[keyPost].id)}>
+                                <FontAwesomeIcon icon={faTimes} className="post__cross"></FontAwesomeIcon>
+                            </button>}
+                        </div>
+                    </div>
                     <p className="post__text">{props.data[keyPost].content}</p>
                     <div className="post__icons">
-                        <button aria-label="edit" className="post__button post__button--heart" onClick={() => editPostToggle(keyPost)}>
-                            <FontAwesomeIcon icon={faEdit} className="post__edit"></FontAwesomeIcon>
-                        </button>
-                        <button aria-label="like" className="post__button post__button--heart">
+                        <button aria-label="like" className="post__button post__button--left">
                             <FontAwesomeIcon icon={faHeart} className="post__heart"></FontAwesomeIcon>
                         </button>
                         <button aria-label="open comments" className="post__button" onClick={() => showComments(props.data[keyPost].id)}>

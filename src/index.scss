@@ -31,12 +31,12 @@ a {
 
 .layer {
   @include sm {
-    margin: 0 100px;
+    padding: 0 100px;
   }
   @include lg {
-    margin: 0 200px;
+    padding: 0 200px;
   }
   @include xl {
-    margin: 0 300px;
+    padding: 0 300px;
   }
 }

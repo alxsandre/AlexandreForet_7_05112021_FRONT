@@ -12,6 +12,15 @@
     padding: .9375rem;
 }
 
+.post--update {
+    filter: blur(1.5px);
+}
+
+.post__head {
+    display: flex;
+    justify-content: space-between;
+}
+
 .post__image  {
     width: 3.375rem;
     height: 3.375rem;
@@ -31,7 +40,6 @@
 }
 
 .post__icons {
-    width: 100%;
     display: flex;
     justify-content: flex-end;
     margin-top: .4375rem;
@@ -46,7 +54,7 @@
     padding: 0;
 }
 
-.post__button--heart {
+.post__button--left {
     margin-right: .625rem;
 }
 
@@ -56,8 +64,13 @@
 }
 
 .post__heart,
-.post__edit {
+.post__edit{
     font-size: 1.25rem;
+    color: $white-primary;
+}
+
+.post__cross {
+    font-size: 1.5rem;
     color: $white-primary;
 }
 

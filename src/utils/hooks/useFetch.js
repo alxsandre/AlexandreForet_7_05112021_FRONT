@@ -33,7 +33,6 @@ export function useFetch(url, bearer, reload) {
   function upDateData(index, event) {
     let newData = {...data};
     newData[index].content = event.target.value;
-
     setData(newData)
   }
 

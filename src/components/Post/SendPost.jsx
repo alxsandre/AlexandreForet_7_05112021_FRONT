@@ -1,7 +1,7 @@
 import './SendPost.scss'
 import { post } from '../../utils/fetch';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 function SendPost(props) {
     const [formData, setFormData] = useState({});
@@ -11,16 +11,16 @@ function SendPost(props) {
     
     
     const handleChange = (event) => {
-        if (props.postToUpdate) {
-            props.upDateData(props.postToUpdate, event);
+        if (props.postIdReact) {
+            props.upDateData(props.postIdReact, event);
         }
         setFormData({...formData, content: event.target.value});
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
-        if (props.postToUpdate) {
-            let response = post(`${process.env.REACT_APP_HOST}/api/post/88`, {...formData}, true, "put");
+        if (props.postIdDb) {
+            let response = post(`${process.env.REACT_APP_HOST}/api/post/${props.postIdDb}`, {...formData}, true, "put");
             if (response) {
                 props.reload(props.load + 1)
                 setFormData({content: ''});
@@ -36,10 +36,15 @@ function SendPost(props) {
         }
         
     }
+
+    const inputToSendPost = useRef(null);
+    if (props.postIdReact) {
+        inputToSendPost.current.focus();
+    }
     
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
-            <input type="text" onChange={handleChange} className="sendpost__text" placeholder="Type your text here" />
+            <input ref={inputToSendPost} type="text" onChange={handleChange} className="sendpost__text" placeholder="Type your text here" />
         </form>
     )
 }
@@ -47,7 +52,8 @@ function SendPost(props) {
 SendPost.propTypes = {
     load: PropTypes.number,
     reload: PropTypes.func,
-    postToUpdate: PropTypes.string,
+    postIdReact: PropTypes.string,
+    postIdDb: PropTypes.number,
     upDateData: PropTypes.func
   }
 

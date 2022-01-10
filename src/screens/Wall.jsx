@@ -14,7 +14,15 @@ function Wall() {
   const bearer = JSON.parse(userAuthentification).token;
   const url = `${process.env.REACT_APP_HOST}/api/post/`;
   let { data, isLoading, upDateData, error } = useFetch(url, bearer, load);
-  const [postKey, setPostKey] = useState();
+  const [postIdReact, setPostIdReact] = useState();
+  const [postIdDb, setPostIdDb] = useState();
+
+  const removefocus = () => {
+    if (postIdReact) {
+      setPostIdReact(null);
+    }
+  }
+
   if (error || data.error  === 0) {
     return (
       <div>
@@ -28,9 +36,22 @@ function Wall() {
       <div>
         <Header />
           <h1>WALL</h1>
-          <SendPost load={load} reload={reload} postToUpdate={postKey} upDateData={upDateData}/>
-        <div className="layer">
-          <Post data={data} isLoading={isLoading} setPostToUpdate={setPostKey} postToUpdate={postKey}/>
+          <SendPost 
+            load={load} 
+            reload={reload} 
+            postIdReact={postIdReact} 
+            upDateData={upDateData}
+            postIdDb={postIdDb}/>
+        <div className="layer" onClick={() => removefocus()}>
+          <Post 
+            data={data} 
+            isLoading={isLoading}
+            user={JSON.parse(userAuthentification)}
+            load={load}
+            reload={reload}
+            setPostIdReact={setPostIdReact}
+            postIdReact={postIdReact}
+            setPostIdDb={setPostIdDb}/>
         </div>
       </div>);
   }
