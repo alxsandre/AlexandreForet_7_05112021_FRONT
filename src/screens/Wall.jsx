@@ -39,9 +39,11 @@ function Wall() {
           <SendPost 
             load={load} 
             reload={reload} 
-            postIdReact={postIdReact} 
+            postIdReact={postIdReact}
+            setPostIdReact={setPostIdReact} 
             upDateData={upDateData}
-            postIdDb={postIdDb}/>
+            postIdDb={postIdDb}
+            setPostIdDb={setPostIdDb}/>
         <div className="layer" onClick={() => removefocus()}>
           <Post 
             data={data} 

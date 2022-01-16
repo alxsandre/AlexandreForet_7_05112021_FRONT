@@ -4,6 +4,7 @@
     background-color: #000000;
     height: 2.375rem;
     width: 50%;
+    cursor: pointer;
 }
 
 .button__text {

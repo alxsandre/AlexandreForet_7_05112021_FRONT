@@ -23,7 +23,9 @@ function SendPost(props) {
             let response = post(`${process.env.REACT_APP_HOST}/api/post/${props.postIdDb}`, {...formData}, true, "put");
             if (response) {
                 props.reload(props.load + 1)
+                props.setPostIdReact(null)
                 setFormData({content: ''});
+                props.setPostIdDb(null)
                 e.target.reset();
             }
         } else {
@@ -54,7 +56,9 @@ SendPost.propTypes = {
     reload: PropTypes.func,
     postIdReact: PropTypes.string,
     postIdDb: PropTypes.number,
-    upDateData: PropTypes.func
+    upDateData: PropTypes.func,
+    setPostIdDb: PropTypes.func,
+    setPostIdReact: PropTypes.func
   }
 
 export default SendPost;
