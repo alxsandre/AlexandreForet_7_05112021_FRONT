@@ -1,9 +1,9 @@
 import './Post.scss';
-import { post } from '../../utils/fetch';
+import { post } from '../../utils/fetch.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faHeart, faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
-import CommentLayout from '../comment/Comment';
+import { useState } from 'react.js';
+import CommentLayout from '../comment/Comment.jsx';
 
 function Post(props) {
     const [commentShown, updateCommentShown] = useState(false);

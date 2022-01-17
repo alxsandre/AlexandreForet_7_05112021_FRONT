@@ -1,9 +1,9 @@
 import './Comment.scss';
-import { useFetch } from '../../utils/hooks/useFetch';
+import { useFetch } from '../../utils/hooks/useFetch.js';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import SendComment from './SendComment';
+import SendComment from './SendComment.jsx';
 import { useState } from 'react';
 
 function Comment(props) {

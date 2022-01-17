@@ -1,8 +1,8 @@
 import './Profile.scss';
-import Header from '../components/layout/Header';
-import Input from '../components/user/Input';
-import Button from '../components/basic/Button';
-import ArrowRight from '../components/basic/ArrowRight';
+import Header from '../components/layout/Header.jsx';
+import Input from '../components/user/Input.jsx';
+import Button from '../components/basic/Button.jsx';
+import ArrowRight from '../components/basic/ArrowRight.jsx';
 import { post } from '../utils/fetch';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";

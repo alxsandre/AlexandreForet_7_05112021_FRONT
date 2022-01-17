@@ -1,5 +1,5 @@
 import './SendComment.scss'
-import { post } from '../../utils/fetch';
+import { post } from '../../utils/fetch.js';
 import PropTypes from 'prop-types';
 
 import { useState } from 'react';

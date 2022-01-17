@@ -1,10 +1,10 @@
-import Header from '../components/layout/Header';
-import Post from '../components/post/Post';
-import SendPost from '../components/post/SendPost';
+import Header from '../components/layout/Header.jsx';
+import Post from '../components/post/Post.jsx';
+import SendPost from '../components/post/SendPost.jsx';
 import './Wall.scss';
 import { useState } from 'react';
 
-import { useFetch } from '../utils/hooks/useFetch'
+import { useFetch } from '../utils/hooks/useFetch.js'
 
 
 function Wall() {
