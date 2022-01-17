@@ -1,4 +1,4 @@
-import Header from '../components/user/Header.jsx';
+import Header from '../components/user/header.jsx';
 import Input from '../components/user/Input.jsx';
 import Button from '../components/basic/Button.jsx';
 import ArrowRight from '../components/basic/ArrowRight.jsx';
