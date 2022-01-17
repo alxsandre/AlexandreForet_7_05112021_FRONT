@@ -1,7 +1,7 @@
-import Header from '../components/user/Header';
-import Input from '../components/user/Input';
-import Button from '../components/basic/Button';
-import ArrowRight from '../components/basic/ArrowRight';
+import Header from '../components/user/Header.jsx';
+import Input from '../components/user/Input.jsx';
+import Button from '../components/basic/Button.jsx';
+import ArrowRight from '../components/basic/ArrowRight.jsx';
 import './Sign.scss';
 
 import { useNavigate } from "react-router-dom";
