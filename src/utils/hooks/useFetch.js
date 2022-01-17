@@ -14,6 +14,7 @@ export function useFetch(url, bearer, reload) {
           'Authorization': 'Bearer ' + bearer,
           Accept: 'application/json',
           'Content-Type': 'application/json',
+          'Origin':`${process.env.REACT_APP_HOST}`
         },
       });
       const data = await response.json()

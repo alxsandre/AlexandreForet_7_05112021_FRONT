@@ -19,6 +19,7 @@ export async function post(url, data, authentification, request) {
       'Authorization': 'Bearer ' + bearer,
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      'Origin':`${process.env.REACT_APP_HOST}`
     },
     body: JSON.stringify({ ...data }),
   })

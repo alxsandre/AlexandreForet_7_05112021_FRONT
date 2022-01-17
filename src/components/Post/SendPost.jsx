@@ -20,8 +20,8 @@ function SendPost(props) {
     async function handleSubmit(e) {
         e.preventDefault();
         if (props.postIdDb) {
-            let response = post(`${process.env.REACT_APP_HOST}/api/post/${props.postIdDb}`, {...formData}, true, "put");
-            if (response) {
+            let response = await post(`${process.env.REACT_APP_HOST}/api/post/${props.postIdDb}`, {...formData}, true, "put");
+            if (await response) {
                 props.reload(props.load + 1)
                 props.setPostIdReact(null)
                 setFormData({content: ''});
@@ -29,8 +29,8 @@ function SendPost(props) {
                 e.target.reset();
             }
         } else {
-            let response = post(`${process.env.REACT_APP_HOST}/api/post`, {...formData, employee_id: userId}, true, "post");
-            if (response) {
+            let response = await post(`${process.env.REACT_APP_HOST}/api/post`, {...formData, employee_id: userId}, true, "post");
+            if (await response) {
                 props.reload(props.load + 1)
                 setFormData({content: ''});
                 e.target.reset();
