@@ -39,7 +39,7 @@ function Post(props) {
                             <button aria-label="edit" className="post__button post__button--left" onClick={() => editPostToggle(keyPost, props.data[keyPost].id)}>
                                 <FontAwesomeIcon icon={faEdit} className="post__edit"></FontAwesomeIcon>
                             </button>}
-                            {(props.user.userId === props.data[keyPost].employee_id || props.user.adminer) &&
+                            {(props.user.userId === props.data[keyPost].employee_id || Boolean(props.user.isAdminer)) &&
                             <button aria-label="delete" className="post__button" onClick={() => deletePost(props.data[keyPost].id)}>
                                 <FontAwesomeIcon icon={faTimes} className="post__cross"></FontAwesomeIcon>
                             </button>}
