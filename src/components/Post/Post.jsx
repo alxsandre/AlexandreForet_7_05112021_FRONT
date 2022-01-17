@@ -2,7 +2,7 @@ import './Post.scss';
 import { post } from '../../utils/fetch.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faHeart, faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react.js';
+import { useState } from 'react';
 import CommentLayout from '../comment/Comment.jsx';
 
 function Post(props) {
