@@ -1,5 +1,5 @@
 import Header from '../components/layout/Header.jsx';
-import Post from '../components/post/Post.jsx';
+import Post from '../components/post/post.jsx';
 import SendPost from '../components/post/SendPost.jsx';
 import './Wall.scss';
 import { useState } from 'react';
