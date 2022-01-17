@@ -1,6 +1,7 @@
 import './Profile.scss';
 import Header from '../components/layout/Header.jsx';
 import Input from '../components/user/Input.jsx';
+import InputPassword from '../components/user/InputPassword.jsx';
 import Button from '../components/basic/Button.jsx';
 import ArrowRight from '../components/basic/ArrowRight.jsx';
 import { post } from '../utils/fetch';
@@ -95,7 +96,7 @@ function Profile() {
           </form>
           {messageEmail && <p className="message">{messageEmail}</p>}
           <form className="profile__form" onSubmit={(e) => handleSubmitPassword(e)}>
-            <Input label="password" extraLabel={'Change your '} handleChange={handleChangePassword} />
+            <InputPassword label="password" extraLabel={'Change your '} handleChange={handleChangePassword} />
             <Button ariaLabel={'submit to change password'}  content={<ArrowRight />} />
           </form>
           {messagePassword && <p className="message">{messagePassword}</p>}

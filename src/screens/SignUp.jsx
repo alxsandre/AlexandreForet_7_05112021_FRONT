@@ -1,5 +1,6 @@
 import Header from '../components/user/Header.jsx';
 import Input from '../components/user/Input.jsx';
+import InputPassword from '../components/user/InputPassword.jsx';
 import Button from '../components/basic/Button.jsx';
 import ArrowRight from '../components/basic/ArrowRight.jsx';
 import './Sign.scss';
@@ -68,7 +69,7 @@ function SignUp() {
         <Input label="last name" handleChange={handleChangeLastName} />
         <Input label="first name" handleChange={handleChangeFirstName} />
         <Input label="email" handleChange={handleChangeEmail} />
-        <Input label="password" handleChange={handleChangePassword} />
+        <InputPassword label="password" handleChange={handleChangePassword} />
         <Button ariaLabel="submit to create profile" nav="/signin" content={<ArrowRight />} />
       </form>
     </div>
