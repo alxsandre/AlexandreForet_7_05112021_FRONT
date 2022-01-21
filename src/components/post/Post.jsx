@@ -54,7 +54,7 @@ function Post(props) {
                             <span className="post__commentnumber">{props.data[keyPost].comments.length}</span>
                             <FontAwesomeIcon icon={faComment} className="post__comment"></FontAwesomeIcon>
                         </button>
-                        {commentShown === props.data[keyPost].id && <CommentLayout postId={props.data[keyPost].id} commentShown={commentShown} updateCommentShown={updateCommentShown} />}
+                        {commentShown === props.data[keyPost].id && <CommentLayout postId={props.data[keyPost].id} load={props.load} reload={props.reload} commentShown={commentShown} updateCommentShown={updateCommentShown} />}
                     </div>
                 </div>    
             </article>

@@ -31,7 +31,7 @@ function CommentLayout(props) {
     return <section className="comment">
             <div className="comment__background"></div>
             <div className="comment__container">
-                <CommentHeader updateCommentShown={props.updateCommentShown}/>
+                <CommentHeader updateCommentShown={props.updateCommentShown} load={props.load} reload={props.reload} />
                 <div className="comment__layer">
                     <Comment load={load} postId={props.postId}/>
                 </div>
@@ -41,8 +41,12 @@ function CommentLayout(props) {
 }
 
 function CommentHeader(props) {
+    function closeComments() {
+        props.updateCommentShown(false)
+        props.reload(props.load + 1)
+    }
     return  <div className="comment__head">
-                <button className="comment__button" onClick={() => props.updateCommentShown(false)}>
+                <button className="comment__button" onClick={closeComments}>
                     <FontAwesomeIcon icon={faTimes} className="comment__cross"></FontAwesomeIcon>
                 </button>
             </div>   
@@ -50,7 +54,7 @@ function CommentHeader(props) {
 
 
 
-CommentLayout.propTypes = { postId: PropTypes.number, updateCommentShown: PropTypes.func }
-CommentHeader.propTypes = { updateCommentShown: PropTypes.func }
+CommentLayout.propTypes = { postId: PropTypes.number, updateCommentShown: PropTypes.func, load: PropTypes.number, reload: PropTypes.func }
+CommentHeader.propTypes = { updateCommentShown: PropTypes.func, load: PropTypes.number, reload: PropTypes.func }
 
 export default CommentLayout;
