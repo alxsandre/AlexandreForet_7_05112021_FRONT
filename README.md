@@ -13,11 +13,11 @@ git clone https://github.com/alxsandre/AlexandreForet_7_05112021_FRONT.git
 cd AlexandreForet_7_05112021_FRONT
 ```
 
+## Import .env.local at the root of the project (available in the folder sent)
+
 ## In the project directory, you can run:
 ```shell
-npm start
+npm i && npm start
 ```
-
-## Import .env.local at the root of the project (available in the folder sent)
 
 ## [Back-end](https://github.com/alxsandre/AlexandreForet_7_08102021_BACK)
