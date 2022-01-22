@@ -44,7 +44,7 @@ function Wall() {
             upDateData={upDateData}
             postIdDb={postIdDb}
             setPostIdDb={setPostIdDb}/>
-        <div className="layer" onClick={() => removefocus()}>
+        <div className="layer layer--wall" onClick={() => removefocus()}>
           <Post 
             data={data} 
             isLoading={isLoading}
